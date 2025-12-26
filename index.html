@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Worm-GPT UI</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,sans-serif;
+  background:radial-gradient(circle at top,#3a0000,#000 45%);
+  color:#fff;
+}
+
+/* ===== SECTION ===== */
+.section{
+  padding:24px 16px;
+  display:flex;
+  justify-content:center;
+}
+
+/* ===== CARD ===== */
+.card{
+  width:360px;
+  background:linear-gradient(180deg,#0c0c0c,#050505);
+  border-radius:22px;
+  padding:26px 22px 30px;
+  border:1px solid rgba(255,0,0,.35);
+  box-shadow:0 0 35px rgba(255,0,0,.25);
+}
+
+/* ===== HERO ===== */
+.hero h1{
+  text-align:center;
+  font-size:30px;
+  margin-bottom:8px;
+  background:linear-gradient(90deg,#ff9c9c,#ff4040);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero p{
+  text-align:center;
+  opacity:.8;
+}
+
+/* ===== IMAGE ===== */
+.product-image{
+  position:relative;
+  margin:22px 0;
+  border-radius:16px;
+  overflow:hidden;
+}
+.product-image img{
+  width:100%;
+  height:190px;
+  object-fit:cover;
+  cursor:pointer;
+}
+.overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  background:rgba(0,0,0,.4);
+  pointer-events:none;
+}
+
+/* ===== LOGIN ===== */
+input{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid #333;
+  background:#0b0b0b;
+  color:#fff;
+  margin-bottom:12px;
+}
+
+/* ===== BUTTON ===== */
+.btn{
+  display:block;
+  width:100%;
+  padding:14px;
+  border-radius:16px;
+  font-weight:700;
+  border:none;
+  cursor:pointer;
+  color:#fff;
+  background:linear-gradient(135deg,#ff1a1a,#7a0000);
+  box-shadow:0 0 28px rgba(255,0,0,.6);
+}
+
+/* ===== LIGHTBOX ===== */
+#lightbox{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.95);
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+#lightbox img{
+  max-width:90%;
+  max-height:85%;
+  border-radius:14px;
+}
+
+/* ===== ORDER MODAL ===== */
+.order-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(6px);
+  z-index:9999;
+  align-items:center;
+  justify-content:center;
+}
+
+.order-card{
+  width:340px;
+  background:linear-gradient(180deg,#0c0f18,#050608);
+  border-radius:22px;
+  padding:26px 22px;
+  border:1px solid rgba(255,0,0,.35);
+  box-shadow:0 0 35px rgba(255,0,0,.45);
+}
+
+.order-icon{
+  width:70px;
+  height:70px;
+  margin:0 auto 14px;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:32px;
+  background:linear-gradient(145deg,#3a0000,#140000);
+}
+
+.order-card h2{
+  text-align:center;
+  color:#ff9c9c;
+}
+
+.order-sub{
+  text-align:center;
+  opacity:.8;
+  margin-bottom:20px;
+}
+
+.order-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px;
+  border-radius:16px;
+  margin-bottom:14px;
+  background:linear-gradient(135deg,#140000,#080000);
+  border:1px solid rgba(255,0,0,.25);
+  color:#fff;
+  text-decoration:none;
+}
+
+.arrow{color:#ff6b6b}
+
+.close-btn{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:16px;
+  background:#121826;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="section">
+  <div class="card hero">
+    <h1>WORM-GPT AI</h1>
+    <p>Advanced AI Interface & Premium Tools</p>
+    <button class="btn openOrder">🔥 GET WORM-GPT NOW</button>
+  </div>
+</section>
+
+<!-- PRODUCT -->
+<section class="section">
+  <div class="card">
+    <h2 style="text-align:center;color:#ff9c9c">Tampilaj Login Worm-GPT
+</h2>
+
+    <div class="product-image">
+      <img class="productImg"
+      src="https://www.danxyofficial.zapto.org/tampilan-login-wormgpt.jpg">
+
+    </div>
+
+    <p style="text-align:center;opacity:.8">
+      Tampilan login premium Worm-GPT dengan security authentication dan user-friendly design untuk akses aman ke sistem AI.
+    </p>
+
+    <button class="btn openOrder">🛡 Detail & Order</button>
+  </div>
+  </section>
+  <section class="section">
+  <div class="card">
+    <h2 style="text-align:center;color:#ff9c9c">Chat & Response Worm-GPT</h2>
+
+    <div class="product-image">
+      <img class="productImg"
+      src="https://www.danxyofficial.zapto.org/tampilan-chat&respon-wormgpt.jpg">
+
+    </div>
+
+    <p style="text-align:center;opacity:.8">
+      Interface chat real-time dengan sistem AI premium.
+    </p>
+
+    <button class="btn openOrder">🛡 Detail & Order</button>
+  </div>
+</section>
+ <section class="section">
+  <div class="card">
+    <h2 style="text-align:center;color:#ff9c9c">Session Chat Real-Time</h2>
+
+    <div class="product-image">
+      <img class="productImg"
+      src="https://www.danxyofficial.zapto.org/tampilan-multi-session-wormgpt.jpg">
+
+    </div>
+
+    <p style="text-align:center;opacity:.8">
+      Interface chat real-time dengan sistem AI premium.
+    </p>
+
+    <button class="btn openOrder">🛡 Detail & Order</button>
+  </div>
+</section>
+ <section class="section">
+  <div class="card">
+    <h2 style="text-align:center;color:#ff9c9c">Session Chat Real-Time</h2>
+
+    <div class="product-image">
+      <img class="productImg"
+      src="https://www.danxyofficial.zapto.org/tampilan-minitools-wormgpt.jpg">
+
+    </div>
+
+    <p style="text-align:center;opacity:.8">
+      Interface chat real-time dengan sistem AI premium.
+    </p>
+
+    <button class="btn openOrder">🛡 Detail & Order</button>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <img id="lightboxImg">
+</div>
+
+<!-- ORDER MODAL -->
+<div class="order-modal" id="orderModal">
+  <div class="order-card">
+    <div class="order-icon">🤖</div>
+    <h2>Order Worm-GPT</h2>
+    <p class="order-sub">Session Chat Real-Time</p>
+
+    <a href="https://t.me/alwysprtyfx" target="_blank" class="order-item">
+      Telegram Prtyfx69store<span class="arrow">→</span>
+    </a>
+
+    <a href="https://wa.me/6285700711112" target="_blank" class="order-item">
+      WhatsApp Channel <span class="arrow">→</span>
+    </a>
+
+    <button class="close-btn" id="closeOrder">Close</button>
+  </div>
+</div>
+
+<script>
+// LIGHTBOX
+// LIGHTBOX
+const imgs = document.querySelectorAll(".productImg");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+
+imgs.forEach(img=>{
+  img.onclick = (e)=>{
+    e.stopPropagation(); // mencegah klik bubble ke parent
+    lightboxImg.src = img.src;
+    lightbox.style.display = "flex";
+  }
+});
+
+lightbox.onclick = ()=> lightbox.style.display = "none";
+
+// ORDER MODAL
+const modal = document.getElementById("orderModal");
+document.querySelectorAll(".openOrder").forEach(btn=>{
+  btn.onclick = (e)=>{
+    e.stopPropagation(); // cegah bubble
+    modal.style.display = "flex";
+  };
+});
+document.getElementById("closeOrder").onclick = ()=> modal.style.display = "none";
+modal.onclick = e => { if(e.target===modal) modal.style.display = "none"; };
+</script>
+
+</body>
+</html>
