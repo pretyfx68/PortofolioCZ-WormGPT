@@ -91,16 +91,16 @@ body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:radial-g
   margin-top: 12px;
 }
 .price-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(6px);z-index:10000;align-items:center;justify-content:center;}
-.price-card{width:300px;background:linear-gradient(180deg,#0c0f18,#050608);border-radius:20px;padding:22px;border:1px solid rgba(0,255,255,.4);box-shadow:0 0 25px rgba(0,255,255,.45);}
-.price-card h2{text-align:center;color:#0ff;}
-#priceContent {
-  min-height:80px;
-  background:rgba(0,0,0,0.5);
-  border-radius:12px;
-  padding:10px;
-  margin-top:10px; /* jarak dari judul */
-  color:#0ff;
+.price-card{width:300px;background:linear-gradient(180deg,#0c0f18,#050608);border-radius:20px;padding:22px;border:1px solid rgba(255,0,0,.35);box-shadow:0 0 25px rgba(255,0,0,.45);}
+.price-card h2{text-align:center;color:#ff0000;}
+#priceContent{
+  max-height:400px;
   overflow-y:auto;
+  background:rgba(0,0,0,0.55);
+  border-radius:14px;
+  padding:14px;
+  color:#fff;
+  font-size:14px;
 }
 .openPrice{
   display:block;
@@ -110,9 +110,39 @@ body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:radial-g
   border-radius:12px;
   border:none;
   background:#222;      /* gelap */
-  color:#0ff;           /* teks cyan */
+  color:#ff0000;           /* teks cyan */
   font-weight:700;
   cursor:pointer;
+}
+.price-list{
+  padding-left:18px;
+  margin:8px 0 10px;
+}
+
+.price-list li{
+  margin-bottom:6px;
+  list-style: none;
+  position: relative;
+}
+
+.price-list li::before{
+  content:"•";
+  color:#ff0000;
+  position:absolute;
+  left:-12px;
+}
+
+.price-tag{
+  margin-top:6px;
+  color:#ff0000;
+  font-weight:700;
+}
+
+.divider{
+  border:none;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#ff0000,transparent);
+  margin:14px 0;
 }
 </style>
 </head>
@@ -121,7 +151,7 @@ body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:radial-g
 <section class="section">
   <div class="card hero">
     <h1>WORM-GPT AI</h1>
-    <p>Advanced AI Interface & Premium Tools</p>
+    <p>Premium Ai Worm-GPT Ilegal anti bantahan & bebas bertanya bebas membuat projeck tanpa melihat ilegal ataupun tidak nya</p>
     <button class="btn openOrder">🔥Dapatkan Produk Dan Lihat Harga</button>
   </div>
 </section>
@@ -169,12 +199,12 @@ body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:radial-g
 <div class="order-modal" id="orderModal">
   <div class="order-card">
     <div class="order-icon">🤖</div>
-    <h2>Order Worm-GPT</h2>
+    <h2>Order Worm-GPT 𝕻𝖗𝖊𝖙𝖞𝕱𝖃</h2>
     <a href="https://t.me/alwysprtyfx" target="_blank" class="order-item">
-      Telegram Prtyfx69store <span class="arrow">→</span>
+      Telegram 𝕻𝖗𝖊𝖙𝖞𝕱𝖃 <span class="arrow">→</span>
     </a>
     <a href="https://wa.me/6285700711112" target="_blank" class="order-item">
-      WhatsApp Channel <span class="arrow">→</span>
+      WhatsApp 𝕻𝖗𝖊𝖙𝖞𝕱𝖃 <span class="arrow">→</span>
     </a>
 
     <!-- Tombol untuk memunculkan modal harga -->
@@ -188,24 +218,30 @@ body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:radial-g
 <div class="price-modal" id="priceModal">
   <div class="price-card">
     <h2>List Harga</h2>
-<div id="priceContent">
-  <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(0,255,255,0.3);">
-    <span>Worm-GPT Basic</span>
-    <span>Rp50.000</span>
-  </div>
-  <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(0,255,255,0.3);">
-    <span>Worm-GPT Standard</span>
-    <span>Rp100.000</span>
-  </div>
-  <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(0,255,255,0.3);">
-    <span>Worm-GPT Premium</span>
-    <span>Rp200.000</span>
-  </div>
-  <div style="display:flex;justify-content:space-between;padding:6px 0;">
-    <span>Worm-GPT Ultimate</span>
-    <span>Rp500.000</span>
-  </div>
+
+    <div id="priceContent">
+
+      <h3 style="color:#ff0000;margin:0 0 6px">Worm-GPT Premium</h3>
+      <ul class="price-list">
+        <li>✔ Tanpa Bantahan</li>
+        <li>✔ Tanpa limit chat & session</li>
+        <li>✔ Response lebih cepat</li>
+        <li>✔ Multi-session real-time</li>
+        <li>✔ Update fitur berkala</li>
+        <li>✔ Penalaran Jailbreak Canggih</li>
+        <li>✔ Lebih Banyak Pesan Dan Unggahan</li>
+        <li>✔ Lebih Banyak Memori</li>
+        <li>✔ Akses Ilegal Ke Fitur Baru</li>
+        <li>✔ Mode Jailbreak Dengan Riset Dalam</li>
+        <li>✔ Support Eksklusif</li>
+         <li>✔ Bersifat VIP</li>
+      </ul>
+
+      <div class="price-tag">Akses 1 Bulan : Rp 50.000 <br>Akses Permanent : Rp 125.000
+      </div>
+      <hr class="divider">
 </div>
+
     <button class="close-btn" id="closePrice">Close</button>
   </div>
 </div>
@@ -313,7 +349,7 @@ productImages.forEach(imgDiv=>{
 
     lightbox.onclick = ()=>{
       lightbox.style.display='none';
-      setTimeout(()=>{ if(cardActive) cardActive.classList.remove('active'); cardActive=null; },2000);
+      setTimeout(()=>{ if(cardActive) cardActive.classList.remove('active'); cardActive=null; },1000);
       translateX=0; translateY=0; currentScale=1;
       updateTransform();
     };
