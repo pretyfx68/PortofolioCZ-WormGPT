@@ -3,119 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Worm-GPT UI</title>
-
+<title>Worm-GPT UI - Glow Merah + Smooth Zoom Pan</title>
 <style>
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,sans-serif;
-  background:radial-gradient(circle at top,#3a0000,#000 45%);
-  color:#fff;
-}
-
-/* ===== SECTION ===== */
-.section{
-  padding:24px 16px;
-  display:flex;
-  justify-content:center;
-}
-
-/* ===== CARD ===== */
-.card{
-  width:360px;
-  background:linear-gradient(180deg,#0c0c0c,#050505);
-  border-radius:22px;
-  padding:26px 22px 30px;
-  border:1px solid rgba(255,0,0,.35);
-  box-shadow:0 0 35px rgba(255,0,0,.25);
-}
-
-/* ===== HERO ===== */
-.hero h1{
-  text-align:center;
-  font-size:30px;
-  margin-bottom:8px;
-  background:linear-gradient(90deg,#ff9c9c,#ff4040);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-.hero p{
-  text-align:center;
-  opacity:.8;
-}
-
-/* ===== IMAGE ===== */
-.product-image{
-  position:relative;
-  margin:22px 0;
-  border-radius:16px;
-  overflow:hidden;
-}
-.product-image img{
-  width:100%;
-  height:190px;
-  object-fit:cover;
-  cursor:pointer;
-}
-.overlay{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:700;
-  background:rgba(0,0,0,.4);
-  pointer-events:none;
-}
-
-/* ===== LOGIN ===== */
-input{
-  width:100%;
-  padding:12px;
-  border-radius:12px;
-  border:1px solid #333;
-  background:#0b0b0b;
-  color:#fff;
-  margin-bottom:12px;
-}
-
-/* ===== BUTTON ===== */
-.btn{
-  display:block;
-  width:100%;
-  padding:14px;
-  border-radius:16px;
-  font-weight:700;
-  border:none;
-  cursor:pointer;
-  color:#fff;
-  background:linear-gradient(135deg,#ff1a1a,#7a0000);
-  box-shadow:0 0 28px rgba(255,0,0,.6);
-}
-
-/* ===== LIGHTBOX ===== */
-#lightbox{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.95);
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-}
-#lightbox img{
-  max-width:90%;
-  max-height:85%;
-  border-radius:14px;
-}
-
+body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:radial-gradient(circle at top,#3a0000,#000 45%);color:#fff;}
+.section{padding:24px 16px;display:flex;justify-content:center;}
+.card{width:360px;background:rgba(0,0,0,0.7);border-radius:22px;padding:26px 22px 30px;border:1px solid rgba(255,0,0,0.25);box-shadow:0 0 15px rgba(255,0,0,0.2);transition: box-shadow 0.3s,border 0.3s,color 0.3s;}
+.card.active{border:2px solid rgba(255,0,0,0.8);box-shadow:0 0 25px rgba(255,0,0,0.7),0 0 50px rgba(255,0,0,0.4) inset;}
+.card.active h2{color:#ff4d4d !important;}
+.hero h1{text-align:center;font-size:30px;margin-bottom:8px;background:linear-gradient(90deg,#ff9c9c,#ff4040);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{text-align:center;opacity:.8;}
+.product-image{position:relative;margin:22px 0;border-radius:16px;overflow:hidden;cursor:pointer;}
+.product-image img{width:100%;height:190px;object-fit:cover;}
+.card h2{text-align:center;color:#ffffff;transition: color 0.3s;}
+.btn{display:block;width:100%;padding:14px;border-radius:16px;font-weight:700;border:none;cursor:pointer;color:#fff;background:linear-gradient(135deg,#ff1a1a,#7a0000);box-shadow:0 0 28px rgba(255,0,0,.6);}
+#lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);align-items:center;justify-content:center;z-index:9999;touch-action:none;overflow:hidden;}
+#lightbox img{max-width:90%;max-height:85%;border-radius:14px;transition: transform 0.2s;cursor:grab;}
+#lightbox img:active{cursor:grabbing;}
 /* ===== ORDER MODAL ===== */
 .order-modal{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.85);
+  background:rgba(0,0,0,0.85);
   backdrop-filter:blur(6px);
   z-index:9999;
   align-items:center;
@@ -178,134 +88,237 @@ input{
   color:#fff;
   font-weight:700;
   cursor:pointer;
+  margin-top: 12px;
+}
+.price-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(6px);z-index:10000;align-items:center;justify-content:center;}
+.price-card{width:300px;background:linear-gradient(180deg,#0c0f18,#050608);border-radius:20px;padding:22px;border:1px solid rgba(0,255,255,.4);box-shadow:0 0 25px rgba(0,255,255,.45);}
+.price-card h2{text-align:center;color:#0ff;}
+#priceContent {
+  min-height:80px;
+  background:rgba(0,0,0,0.5);
+  border-radius:12px;
+  padding:10px;
+  margin-top:10px; /* jarak dari judul */
+  color:#0ff;
+  overflow-y:auto;
+}
+.openPrice{
+  display:block;
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:12px;
+  border:none;
+  background:#222;      /* gelap */
+  color:#0ff;           /* teks cyan */
+  font-weight:700;
+  cursor:pointer;
 }
 </style>
 </head>
-
 <body>
 
-<!-- HERO -->
 <section class="section">
   <div class="card hero">
     <h1>WORM-GPT AI</h1>
     <p>Advanced AI Interface & Premium Tools</p>
-    <button class="btn openOrder">🔥 GET WORM-GPT NOW</button>
+    <button class="btn openOrder">🔥Dapatkan Produk Dan Lihat Harga</button>
   </div>
 </section>
 
-<!-- PRODUCT -->
 <section class="section">
   <div class="card">
-    <h2 style="text-align:center;color:#ff9c9c">Tampilaj Login Worm-GPT
-</h2>
-
-    <div class="product-image">
-      <img class="productImg"
-      src="https://www.danxyofficial.zapto.org/tampilan-login-wormgpt.jpg">
-
-    </div>
-
-    <p style="text-align:center;opacity:.8">
+    <h2>Tampilan Login Worm-GPT</h2>
+    <div class="product-image"><img src="https://www.danxyofficial.zapto.org/tampilan-login-wormgpt.jpg"></div>
+        <p style="text-align:center;opacity:.8">
       Tampilan login premium Worm-GPT dengan security authentication dan user-friendly design untuk akses aman ke sistem AI.
     </p>
-
-    <button class="btn openOrder">🛡 Detail & Order</button>
-  </div>
-  </section>
-  <section class="section">
-  <div class="card">
-    <h2 style="text-align:center;color:#ff9c9c">Chat & Response Worm-GPT</h2>
-
-    <div class="product-image">
-      <img class="productImg"
-      src="https://www.danxyofficial.zapto.org/tampilan-chat&respon-wormgpt.jpg">
-
-    </div>
-
-    <p style="text-align:center;opacity:.8">
-      Interface chat real-time dengan sistem AI premium.
-    </p>
-
-    <button class="btn openOrder">🛡 Detail & Order</button>
-  </div>
-</section>
- <section class="section">
-  <div class="card">
-    <h2 style="text-align:center;color:#ff9c9c">Session Chat Real-Time</h2>
-
-    <div class="product-image">
-      <img class="productImg"
-      src="https://www.danxyofficial.zapto.org/tampilan-multi-session-wormgpt.jpg">
-
-    </div>
-
-    <p style="text-align:center;opacity:.8">
-      Interface chat real-time dengan sistem AI premium.
-    </p>
-
-    <button class="btn openOrder">🛡 Detail & Order</button>
-  </div>
-</section>
- <section class="section">
-  <div class="card">
-    <h2 style="text-align:center;color:#ff9c9c">Session Chat Real-Time</h2>
-
-    <div class="product-image">
-      <img class="productImg"
-      src="https://www.danxyofficial.zapto.org/tampilan-minitools-wormgpt.jpg">
-
-    </div>
-
-    <p style="text-align:center;opacity:.8">
-      Interface chat real-time dengan sistem AI premium.
-    </p>
-
-    <button class="btn openOrder">🛡 Detail & Order</button>
   </div>
 </section>
 
-<!-- LIGHTBOX -->
-<div id="lightbox">
-  <img id="lightboxImg">
-</div>
+<section class="section">
+  <div class="card">
+    <h2>Chat & Response Worm-GPT</h2>
+    <div class="product-image"><img src="https://www.danxyofficial.zapto.org/tampilan-chat&respon-wormgpt.jpg"></div>
+        <p style="text-align:center;opacity:.8">
+      Interface chat real-time, Dengan Worm-GPT anda bisa menanyakan ataupun memintah hal hal ilegal tanpa larangan sedikitpun ataupun tanpa bantahan sedikitpun
+    </p>
+  </div>
+</section>
 
-<!-- ORDER MODAL -->
+<section class="section">
+  <div class="card">
+    <h2>Session Chat Real-Time</h2>
+    <div class="product-image"><img src="https://www.danxyofficial.zapto.org/tampilan-multi-session-wormgpt.jpg"></div>
+            <p style="text-align:center;opacity:.8">
+      Panel untuk mengelola multiple session secara bersamaan, monitoring real-time, dan kontrol penuh aktivitas AI.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="card">
+    <h2>Mini Tools Worm-GPT</h2>
+    <div class="product-image"><img src="https://www.danxyofficial.zapto.org/tampilan-minitools-wormgpt.jpg"></div>
+                <p style="text-align:center;opacity:.8">
+      Kumpulan mini tools terintegrasi dalam Worm-GPT untuk scanning cepat, analysis, dan reporting otomatis.
+    </p>
+  </div>
+</section>
+<!-- MODAL ORDER -->
 <div class="order-modal" id="orderModal">
   <div class="order-card">
     <div class="order-icon">🤖</div>
     <h2>Order Worm-GPT</h2>
-    <p class="order-sub">Session Chat Real-Time</p>
-
     <a href="https://t.me/alwysprtyfx" target="_blank" class="order-item">
-      Telegram Prtyfx69store<span class="arrow">→</span>
+      Telegram Prtyfx69store <span class="arrow">→</span>
     </a>
-
     <a href="https://wa.me/6285700711112" target="_blank" class="order-item">
       WhatsApp Channel <span class="arrow">→</span>
     </a>
+
+    <!-- Tombol untuk memunculkan modal harga -->
+<button class="openPrice">Lihat Harga</button>
 
     <button class="close-btn" id="closeOrder">Close</button>
   </div>
 </div>
 
+<!-- MODAL HARGA -->
+<div class="price-modal" id="priceModal">
+  <div class="price-card">
+    <h2>List Harga</h2>
+<div id="priceContent">
+  <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(0,255,255,0.3);">
+    <span>Worm-GPT Basic</span>
+    <span>Rp50.000</span>
+  </div>
+  <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(0,255,255,0.3);">
+    <span>Worm-GPT Standard</span>
+    <span>Rp100.000</span>
+  </div>
+  <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(0,255,255,0.3);">
+    <span>Worm-GPT Premium</span>
+    <span>Rp200.000</span>
+  </div>
+  <div style="display:flex;justify-content:space-between;padding:6px 0;">
+    <span>Worm-GPT Ultimate</span>
+    <span>Rp500.000</span>
+  </div>
+</div>
+    <button class="close-btn" id="closePrice">Close</button>
+  </div>
+</div>
+<div id="lightbox"><img id="lightboxImg"></div>
+
 <script>
-// LIGHTBOX
-// LIGHTBOX
-const imgs = document.querySelectorAll(".productImg");
+let currentScale = 1, translateX = 0, translateY = 0;
+let startX = 0, startY = 0, initialDistance = 0;
+let isDragging = false;
+let cardActive = null;
+
+const productImages = document.querySelectorAll('.product-image');
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightboxImg");
 
-imgs.forEach(img=>{
-  img.onclick = (e)=>{
-    e.stopPropagation(); // mencegah klik bubble ke parent
-    lightboxImg.src = img.src;
-    lightbox.style.display = "flex";
+function getDistance(touches) {
+  const [t1, t2] = touches;
+  return Math.hypot(t2.pageX - t1.pageX, t2.pageY - t1.pageY);
+}
+
+function updateTransform() {
+  lightboxImg.style.transform = `translate(${translateX}px,${translateY}px) scale(${currentScale})`;
+}
+
+function smoothDrag(x, y){
+  translateX = x;
+  translateY = y;
+  requestAnimationFrame(updateTransform);
+}
+
+function startDrag(e){
+  isDragging = true;
+  if(e.type==='mousedown'){
+    startX = e.clientX - translateX;
+    startY = e.clientY - translateY;
+    document.onmousemove = drag;
+    document.onmouseup = endDrag;
+  } else if(e.type==='touchstart'){
+    startX = e.touches[0].clientX - translateX;
+    startY = e.touches[0].clientY - translateY;
+    document.ontouchmove = drag;
+    document.ontouchend = endDrag;
   }
+}
+
+function drag(e){
+  if(!isDragging) return;
+  let x = (e.clientX || e.touches[0].clientX) - startX;
+  let y = (e.clientY || e.touches[0].clientY) - startY;
+  smoothDrag(x, y);
+}
+
+function endDrag(){
+  isDragging = false;
+  document.onmousemove = null;
+  document.onmouseup = null;
+  document.ontouchmove = null;
+  document.ontouchend = null;
+}
+
+productImages.forEach(imgDiv=>{
+  imgDiv.addEventListener('click', e=>{
+    const card = imgDiv.closest('.card');
+    card.classList.add('active');
+    cardActive = card;
+
+    lightboxImg.src = imgDiv.querySelector('img').src;
+    currentScale = 1; translateX = 0; translateY = 0;
+    updateTransform();
+    lightbox.style.display = 'flex';
+
+    // scroll zoom desktop
+    lightboxImg.onwheel = ev=>{
+      ev.preventDefault();
+      currentScale += ev.deltaY<0?0.1:-0.1;
+      currentScale=Math.min(Math.max(1,currentScale),3);
+      updateTransform();
+    };
+
+    // pinch zoom mobile & drag
+    lightboxImg.ontouchstart = ev=>{
+      if(ev.touches.length===2){
+        initialDistance = getDistance(ev.touches);
+      } else if(ev.touches.length===1){
+        startDrag(ev);
+      }
+    };
+    lightboxImg.ontouchmove = ev=>{
+      if(ev.touches.length===2){
+        const newDistance = getDistance(ev.touches);
+        let scaleChange = (newDistance-initialDistance)/200;
+        currentScale = Math.min(Math.max(1,currentScale+scaleChange),3);
+        updateTransform();
+        initialDistance = newDistance;
+      } else if(ev.touches.length===1){
+        drag(ev);
+      }
+    };
+    lightboxImg.ontouchend = ev=>{
+      if(ev.touches.length<2) endDrag();
+    };
+
+    lightboxImg.onmousedown = startDrag;
+    lightboxImg.ontouchstart = startDrag;
+
+    lightbox.onclick = ()=>{
+      lightbox.style.display='none';
+      setTimeout(()=>{ if(cardActive) cardActive.classList.remove('active'); cardActive=null; },2000);
+      translateX=0; translateY=0; currentScale=1;
+      updateTransform();
+    };
+  });
 });
-
-lightbox.onclick = ()=> lightbox.style.display = "none";
-
-// ORDER MODAL
 const modal = document.getElementById("orderModal");
 document.querySelectorAll(".openOrder").forEach(btn=>{
   btn.onclick = (e)=>{
@@ -315,6 +328,12 @@ document.querySelectorAll(".openOrder").forEach(btn=>{
 });
 document.getElementById("closeOrder").onclick = ()=> modal.style.display = "none";
 modal.onclick = e => { if(e.target===modal) modal.style.display = "none"; };
+const priceModal = document.getElementById("priceModal");
+const btnOpenPrice = document.querySelector(".openPrice");
+const btnClosePrice = document.getElementById("closePrice");
+btnOpenPrice.onclick = ()=> priceModal.style.display="flex";
+btnClosePrice.onclick = ()=> priceModal.style.display="none";
+priceModal.onclick = e=>{ if(e.target===priceModal) priceModal.style.display="none"; };
 </script>
 
 </body>
