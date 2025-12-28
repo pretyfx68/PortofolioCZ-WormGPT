@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Worm-GPT UI - Glow Merah + Smooth Zoom Pan</title>
+<title>Gpt Worm PrtdFX69</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:radial-gradient(circle at top,#3a0000,#000 45%);color:#fff;}
@@ -11,7 +12,18 @@ body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:radial-g
 .card{width:360px;background:rgba(0,0,0,0.7);border-radius:22px;padding:26px 22px 30px;border:1px solid rgba(255,0,0,0.25);box-shadow:0 0 15px rgba(255,0,0,0.2);transition: box-shadow 0.3s,border 0.3s,color 0.3s;}
 .card.active{border:2px solid rgba(255,0,0,0.8);box-shadow:0 0 25px rgba(255,0,0,0.7),0 0 50px rgba(255,0,0,0.4) inset;}
 .card.active h2{color:#ff4d4d !important;}
-.hero h1{text-align:center;font-size:30px;margin-bottom:8px;background:linear-gradient(90deg,#ff9c9c,#ff4040);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero h1{
+  text-align:center;
+  font-size:32px;
+  margin-bottom:10px;
+  font-weight:800;
+  text-shadow:
+    0 0 10px rgba(255,0,0,0.8),
+    0 0 25px rgba(255,0,0,0.6);
+  background:linear-gradient(90deg,#ffb3b3,#ff2b2b);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
 .hero p{text-align:center;opacity:.8;}
 .product-image{position:relative;margin:22px 0;border-radius:16px;overflow:hidden;cursor:pointer;}
 .product-image img{width:100%;height:190px;object-fit:cover;}
@@ -144,12 +156,65 @@ body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:radial-g
   background:linear-gradient(90deg,transparent,#ff0000,transparent);
   margin:14px 0;
 }
+.card.hero{
+  position: relative;
+  background:
+    linear-gradient(
+      rgba(120,0,0,0.75),
+      rgba(0,0,0,0.9)
+    ),
+    url("https://raw.githubusercontent.com/PretyFX69/music-files2/refs/heads/main/IMG-20251228-WA0098.jpg");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.hero-icon{
+  display:flex;
+  justify-content:center;
+  margin-bottom:12px;
+}
+
+.hero-icon i{
+  font-size:46px;
+
+  /* warna dasar merah gelap */
+  color:#8b0000;
+
+  /* efek mengkilap */
+  background:linear-gradient(
+    180deg,
+    #ff5a5a 0%,
+    #8b0000 45%,
+    #4d0000 100%
+  );
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  /* glow halus */
+  text-shadow:
+    0 0 6px rgba(255,0,0,0.45),
+    0 0 14px rgba(255,0,0,0.25);
+
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,0.8));
+}
+@keyframes pulseRed{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+  100%{transform:scale(1)}
+}
+
+.hero-icon i{
+  animation:pulseRed 2.2s infinite;
+}
 </style>
 </head>
 <body>
 
 <section class="section">
   <div class="card hero">
+<div class="hero-icon">
+  <i class="fa-solid fa-robot"></i>
+</div>
     <h1>WORM-GPT AI</h1>
     <p>Premium Ai Worm-GPT Ilegal anti bantahan & bebas bertanya bebas membuat projeck tanpa melihat ilegal ataupun tidak nya</p>
     <button class="btn openOrder">🔥Dapatkan Produk Dan Lihat Harga</button>
@@ -198,7 +263,9 @@ body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:radial-g
 <!-- MODAL ORDER -->
 <div class="order-modal" id="orderModal">
   <div class="order-card">
-    <div class="order-icon">🤖</div>
+      <div class="hero-icon">
+  <i class="fa-solid fa-robot"></i>
+</div>
     <h2>Order Worm-GPT 𝕻𝖗𝖊𝖙𝖞𝕱𝖃</h2>
     <a href="https://t.me/alwysprtyfx" target="_blank" class="order-item">
       Telegram 𝕻𝖗𝖊𝖙𝖞𝕱𝖃 <span class="arrow">→</span>
